@@ -1,35 +1,26 @@
 import React from 'react';
 import { Sidebar } from './components';
-import { Application } from './pages';
-import { Dashboard} from './pages';
-import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { useStateContext } from './contexts/ContextProvider';
+import { Dashboard ,Application} from './pages';
+import './App.css';
 
 const App = () => {
-    const { activeMenu } = useStateContext();
-
     return (
         <BrowserRouter>
-            <div className='flex relative dark:bg-main-dark-bg'>
-                <div className='w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white'>
+            <div className='flex relative'>
+                <div className='w-52 fixed'>
                     <Sidebar />
                 </div>
-                <div className={`dark:bg-main-dark-bg bg-main-bg min-h-screen w-full ${activeMenu ? 'md:ml-72' : 'flex-2'}`}>
-                    
-                    <div>
-                        <Routes>
-                          
-                            <Route path="/" element={<Dashboard />} />
-                            <Route path="/dashboard" element={<Dashboard />} />
-                            <Route path="/application" element={<Application />} />
-                          
-                        </Routes>
-                    </div>
+                <div className=' min-h-screen w-full ml-52'>
+                    <Routes>
+                        <Route path="/" element={<Dashboard />} />
+                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/application" element={<Application />} />
+                    </Routes>
                 </div>
             </div>
         </BrowserRouter>
-    )
-}
+    );
+};
 
 export default App;

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Header } from '../components';
 import { IoIosArrowDown } from "react-icons/io";
 import { IoSearchSharp } from "react-icons/io5";
 import { FiFilter } from "react-icons/fi";
@@ -76,8 +75,11 @@ const Application = () => {
   
 
   return (
-    <div className='m-2 md:m-10 p-2 md:p-10'>
-      <Header title="Application" category="On going recruitment" />
+    <div className='pt-6 pl-5 pr-6' style={{ backgroundColor: '#E0EDEA' }}>
+  
+  <div className="text-xl font-bold mb-4">Application</div>
+<div className="text-m mb-2">On going recruitment</div>
+
 
       <div className="relative inline-block w-100">
         <button onClick={toggleDropdown} className="w-100 bg-custom-bg  text-black py-2 px-4 rounded">
@@ -97,7 +99,7 @@ const Application = () => {
         </button>
 
         {isDropdownOpen && (
-          <div className="absolute z-10 mt-2 bg-white rounded-md shadow-lg">
+          <div className="absolute z-10 mt-2 bg-white rounded shadow-lg">
             <button onClick={() => handleOptionClick("Product Designer")} className="block px-4 py-2 flex items-center">
               <span className="mr-2">Product Designer</span>
             </button>
@@ -113,25 +115,28 @@ const Application = () => {
       </div>
 
       {/* Bar with options, search, and filter */}
-      <div className='mt-4 md:p-3 bg-white rounded-2xl'>
+      <div className='mt-4 md:p-3 bg-white rounded'>
         <div className="flex items-center justify-between">
-          <div className="mr-6">
-            {selectedOption && (
-              <>
-                <span className="mr-4" onClick={() => handleStatusClick('all')}>All ({candidateCounts.total}) </span>
-                <span className="mr-4" onClick={() => handleStatusClick('shortlisted')}>Shortlisted ({candidateCounts.shortlisted}) </span>
-                <span className="mr-4" onClick={() => handleStatusClick('In Process')}>In Process ({candidateCounts['In Process']}) </span>
-                <span className="mr-4" onClick={() => handleStatusClick('On Hold')}>On Hold ({candidateCounts['On Hold']}) </span>
-                <span onClick={() => handleStatusClick('rejected')}>Rejected ({candidateCounts.rejected}) </span>
-              </>
-            )}
-          </div>
+        <div className="mr-6">
+  {selectedOption && (
+    <>
+      <span className="mr-4 font-bold cursor-pointer border-b border-transparent hover:border-teal-500 hover:border-b-2 hover:pb-3" onClick={() => handleStatusClick('all')}>All ({candidateCounts.total}) </span>
+      <span className="mr-4 font-bold cursor-pointer border-b border-transparent hover:border-teal-500 hover:border-b-2 hover:pb-3" onClick={() => handleStatusClick('shortlisted')}>Shortlisted ({candidateCounts.shortlisted}) </span>
+      <span className="mr-4 font-bold cursor-pointer border-b border-transparent hover:border-teal-500 hover:border-b-2 hover:pb-3" onClick={() => handleStatusClick('In Process')}>In Process ({candidateCounts['In Process']}) </span>
+      <span className="mr-4 font-bold cursor-pointer border-b border-transparent hover:border-teal-500 hover:border-b-2 hover:pb-3" onClick={() => handleStatusClick('On Hold')}>On Hold ({candidateCounts['On Hold']}) </span>
+      <span className="font-bold cursor-pointer border-b border-transparent hover:border-teal-500 hover:border-b-2 hover:pb-3" onClick={() => handleStatusClick('rejected')}>Rejected ({candidateCounts.rejected}) </span>
+    </>
+  )}
+</div>
+
+
+
 
           <div className="flex items-center">
-            <div className="flex gap-2 mr-4">
-              <IoSearchSharp className="text-xl cursor-pointer" style={{ color: '#11998E' }} /> Search
+            <div className="flex gap-2 mr-4 font-bold">
+              <IoSearchSharp className="text-xl cursor-pointer " style={{ color: '#11998E' }} /> Search
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 font-bold">
               <FiFilter className="text-xl cursor-pointer "style={{ color: '#11998E' }} /> Filter
             </div>
           </div>
@@ -139,11 +144,11 @@ const Application = () => {
       </div>
 
 
-      <div className="mt-4">
-        <table className="min-w-full" style={{ borderCollapse: 'separate', borderSpacing: '0 1.5rem' }}>
+      <div>
+        <table className="min-w-full " style={{ borderCollapse: 'separate', borderSpacing: '0 1.5rem' }}>
           <tbody className="bg-white divide-y divide-gray-200">
             {employees.map((employee, index) => (
-              <tr key={index} className="border-gray-200">
+              <tr key={index}>
                 <td className="px-6 py-4 whitespace-no-wrap">
                   <div className="flex items-center">
                     <img src="../avatar.png" alt="Profile" className="w-10 h-10 rounded-full mr-4" />
@@ -154,7 +159,7 @@ const Application = () => {
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-no-wrap">
-                  <div className="text-center">
+                  <div>
                     <div className="font-semibold">{employee.status}</div>
                   </div>
                 </td>
