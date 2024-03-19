@@ -40,7 +40,7 @@ const Chart4 = () => {
         const domContainer = document.querySelector('#chart4');
         ReactDOM.render(<ReactApexChart options={chartData.options} series={chartData.series} type="bar" height={350} />, domContainer);
 
-        // Clean up function
+    
         return () => {
             ReactDOM.unmountComponentAtNode(domContainer);
         };
