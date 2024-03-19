@@ -6,10 +6,12 @@ const Chart3 = () => {
 
     useEffect(() => {
         const options = {
-            series: [44, 55, 41, 17, 15],
+            series: [44, 55],
+            labels: ['Male', 'Female'], 
             chart: {
                 type: 'donut',
             },
+            colors: ['#11998E', '#E7B860'], 
             responsive: [{
                 breakpoint: 480,
                 options: {
@@ -20,18 +22,27 @@ const Chart3 = () => {
                         position: 'bottom'
                     }
                 }
-            }]
+            }],
+            title: {
+                text: 'Candidates by Gender',
+                align: 'left',
+                style: {
+                    fontSize: '18px',
+                    fontWeight: 'bold',
+                    color: '#333'
+                }
+            }
         };
 
         const chart = new ApexCharts(chartRef.current, options);
         chart.render();
 
         return () => {
-            chart.destroy(); // Cleanup when component unmounts
+            chart.destroy(); 
         };
-    }, []); // Empty dependency array to run only on component mount
+    }, []); 
 
-    return <div id="chart3" ref={chartRef}></div>;
+    return <div id="chart" ref={chartRef}></div>;
 };
 
 export default Chart3;
